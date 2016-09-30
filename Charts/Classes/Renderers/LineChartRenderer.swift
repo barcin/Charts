@@ -470,7 +470,7 @@ open class LineChartRenderer: LineRadarChartRenderer
     }
     
     /// Generates the path that is used for filled drawing.
-    private func generateFilledPath(dataSet: ILineChartDataSet, fillMin: CGFloat, from: Int, to: Int, matrix: CGAffineTransform) -> CGPath
+    public func generateFilledPath(dataSet: ILineChartDataSet, fillMin: CGFloat, from: Int, to: Int, matrix: CGAffineTransform) -> CGPath
     {
         let phaseX = max(0.0, min(1.0, animator?.phaseX ?? 1.0))
         let phaseY = animator?.phaseY ?? 1.0
