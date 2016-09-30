@@ -447,7 +447,7 @@ public class LineChartRenderer: LineRadarRenderer
     }
     
     /// Generates the path that is used for filled drawing.
-    private func generateFilledPath(dataSet dataSet: ILineChartDataSet, fillMin: CGFloat, bounds: XBounds, matrix: CGAffineTransform) -> CGPath
+    public func generateFilledPath(dataSet dataSet: ILineChartDataSet, fillMin: CGFloat, bounds: XBounds, matrix: CGAffineTransform) -> CGPath
     {
         let phaseY = animator?.phaseY ?? 1.0
         let isDrawSteppedEnabled = dataSet.mode == .Stepped
