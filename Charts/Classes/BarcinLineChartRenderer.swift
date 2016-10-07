@@ -29,8 +29,7 @@ public class BarcinLineChartRenderer : LineChartRenderer {
             matrix: trans.valueToPixelMatrix)
         
         if let set = dataSet as? BarcinLineChartDataSet{
-            if set
-                .isFillGradientEnabled == true {
+            if set.isFillGradientEnabled == true {
                 
                 let colorSpace = CGColorSpaceCreateDeviceRGB()
                 let colorLocations:[CGFloat] = [0.4, 1.0]
@@ -144,7 +143,7 @@ public class BarcinLineChartRenderer : LineChartRenderer {
             let entries = set.yVals
             
             let filled = super.generateFilledPath(
-                dataSet: entries as! ILineChartDataSet,
+                dataSet: set,
                 fillMin: set.fillFormatter?.getFillLinePosition(dataSet: set, dataProvider: dataProvider!) ?? 0.0,
                 from: minx,
                 to: maxx+1,

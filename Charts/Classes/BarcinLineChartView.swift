@@ -139,25 +139,29 @@ public class BarcinLineChartView : LineChartView {
     
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.totalTouches -= touches.count
+        
         for touch in touches {
-            let chartH = getHighlightByTouchPoint(touch.location(in: self))
-            let arr : [ChartHighlight] = self.hValues
-            for hValue in arr {
-                if hValue.xIndex == chartH?.xIndex {
-                    if let index = self.hValues.index(of: hValue){
-                        self.hValues.remove(at: index)
+            if let chartH = getHighlightByTouchPoint(touch.location(in: self)){
+                var listOfHValues : [ChartHighlight] = hValues
+                for hValue in listOfHValues {
+                    if hValue.xIndex == chartH.xIndex {
+                        if let index = hValues.index(where: {$0 === hValue}){
+                            hValues.remove(at: index)
+                        }
+                    }
+                }
+                
+                var listOfIndices = _indicesToHighlight
+                for indice in listOfIndices {
+                    if indice.xIndex == chartH.xIndex {
+                        if let index = _indicesToHighlight.index(where: {$0 === indice}){
+                            _indicesToHighlight.remove(at: index)
+                        }
                     }
                 }
             }
-            
-            for indice in _indicesToHighlight {
-                if indice.xIndex == chartH?.xIndex {
-                    _indicesToHighlight.remove(at: _indicesToHighlight.index(of: indice)!)
-                }
-            }
-            
-            
         }
+        
         if self.totalTouches > 0 {
             var barcinDataEntries:[ChartDataEntry] = []
             var barcinDataIndexes:[Int] = []
@@ -170,6 +174,7 @@ public class BarcinLineChartView : LineChartView {
             self.lastHighlighted = nil
             delegate!.chartValueNothingSelected?(self)
         }
+        
         setNeedsDisplay()
     }
     
