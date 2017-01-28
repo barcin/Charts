@@ -140,7 +140,6 @@ public class BarcinLineChartRenderer : LineChartRenderer {
             // draw the lines
             //drawHighlightLines(context: context, point: _highlightPointBuffer, set: set)
             
-            let entries = set.yVals
             
             let filled = super.generateFilledPath(
                 dataSet: set,
