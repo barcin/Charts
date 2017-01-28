@@ -56,7 +56,7 @@ public class BarcinLineChartView : LineChartView {
             setNeedsDisplay()
             self.lastHighlighted = nil
             self.hValues = []
-            delegate!.chartValueNothingSelected?(self)
+            delegate?.chartValueNothingSelected?(self)
         } else {
             if recognizer.numberOfTouches == 1 {
                 let h = getHighlightByTouchPoint(recognizer.location(in: self))
@@ -74,9 +74,10 @@ public class BarcinLineChartView : LineChartView {
                 for i in 1...recognizer.numberOfTouches {
                     let touch = recognizer.location(ofTouch: i-1, in: self)
                     if touch.x < self.frame.width - 20 {
-                        let chartH = getHighlightByTouchPoint(touch)! as ChartHighlight
-                        self.hValues.append(chartH)
-                        self.highlightValues(highs: self.hValues, callDelegate: true)
+                        if let chartH = getHighlightByTouchPoint(touch){
+                            self.hValues.append(chartH)
+                            self.highlightValues(highs: self.hValues, callDelegate: true)
+                        }
                     }
                 }
             } else {
@@ -142,7 +143,7 @@ public class BarcinLineChartView : LineChartView {
         
         for touch in touches {
             if let chartH = getHighlightByTouchPoint(touch.location(in: self)){
-                var listOfHValues : [ChartHighlight] = hValues
+                let listOfHValues : [ChartHighlight] = hValues
                 for hValue in listOfHValues {
                     if hValue.xIndex == chartH.xIndex {
                         if let index = hValues.index(where: {$0 === hValue}){
@@ -151,7 +152,7 @@ public class BarcinLineChartView : LineChartView {
                     }
                 }
                 
-                var listOfIndices = _indicesToHighlight
+                let listOfIndices = _indicesToHighlight
                 for indice in listOfIndices {
                     if indice.xIndex == chartH.xIndex {
                         if let index = _indicesToHighlight.index(where: {$0 === indice}){
