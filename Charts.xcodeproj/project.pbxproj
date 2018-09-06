@@ -66,6 +66,10 @@
 		5DC9BC1B6C128B2C9995AB84 /* ScatterChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5B764EC0AE1E17E55DC67 /* ScatterChartRenderer.swift */; };
 		5F96E95C7073D21EFE02BCF7 /* LineChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DABDBBCCE6B3620C967F04A /* LineChartRenderer.swift */; };
 		60EDF735AAB7195DCFA5FE4D /* CandleStickChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1A58428DC4780BAB4EAADC /* CandleStickChartView.swift */; };
+		630138F521414E3500958323 /* BarcinLineChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630138F421414E3500958323 /* BarcinLineChartDataSet.swift */; };
+		630138F721414E4A00958323 /* BarcinLineChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630138F621414E4A00958323 /* BarcinLineChartRenderer.swift */; };
+		630138F921414E6B00958323 /* BarcinLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630138F821414E6B00958323 /* BarcinLineChartView.swift */; };
+		630138FB21418B1700958323 /* BarcinChartViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630138FA21418B1700958323 /* BarcinChartViewDelegate.swift */; };
 		6303DBDEE4FAB8E40D023BCE /* RadarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2440DB759AB93B4A928A3F6F /* RadarChartView.swift */; };
 		63C0A21D145BFEDED5406E4D /* BubbleChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44829AF0ADA583F1F0279B7 /* BubbleChartDataSet.swift */; };
 		64FA1EDB4DC1F65727D52D10 /* CombinedHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2465CB73738EBAFB46C57288 /* CombinedHighlighter.swift */; };
@@ -234,6 +238,10 @@
 		5C3F5E1A69EC06E86505F7B1 /* BarChartTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarChartTests.swift; path = Tests/Charts/BarChartTests.swift; sourceTree = "<group>"; };
 		6021C9E424C36116AEA78CC9 /* HorizontalBarChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HorizontalBarChartView.swift; path = Source/Charts/Charts/HorizontalBarChartView.swift; sourceTree = "<group>"; };
 		62B73FCEDD3841E7B958F6A9 /* ChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartDataProvider.swift; path = Source/Charts/Interfaces/ChartDataProvider.swift; sourceTree = "<group>"; };
+		630138F421414E3500958323 /* BarcinLineChartDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcinLineChartDataSet.swift; sourceTree = "<group>"; };
+		630138F621414E4A00958323 /* BarcinLineChartRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcinLineChartRenderer.swift; sourceTree = "<group>"; };
+		630138F821414E6B00958323 /* BarcinLineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcinLineChartView.swift; sourceTree = "<group>"; };
+		630138FA21418B1700958323 /* BarcinChartViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcinChartViewDelegate.swift; sourceTree = "<group>"; };
 		65AD9E95D9ED4DC0BD73A743 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		688B80F1AA88AE54152BE768 /* YAxisRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAxisRenderer.swift; path = Source/Charts/Renderers/YAxisRenderer.swift; sourceTree = "<group>"; };
 		6A4770E0F75EFFC30707A7C8 /* DefaultAxisValueFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultAxisValueFormatter.swift; path = Source/Charts/Formatters/DefaultAxisValueFormatter.swift; sourceTree = "<group>"; };
@@ -379,6 +387,7 @@
 		2647844720BC6574A544A337 /* Charts */ = {
 			isa = PBXGroup;
 			children = (
+				630138F321414E2000958323 /* Barcin */,
 				A49C1F0F9CCD6E5C143C29F4 /* Animation */,
 				8C531E3F3C3DE5843C93C3DA /* Charts */,
 				51EF1986C9884C25EED1C2CB /* Components */,
@@ -436,6 +445,17 @@
 				FB92A80F861C1362EED8D946 /* YAxis.swift */,
 			);
 			name = Components;
+			sourceTree = "<group>";
+		};
+		630138F321414E2000958323 /* Barcin */ = {
+			isa = PBXGroup;
+			children = (
+				630138F421414E3500958323 /* BarcinLineChartDataSet.swift */,
+				630138F621414E4A00958323 /* BarcinLineChartRenderer.swift */,
+				630138F821414E6B00958323 /* BarcinLineChartView.swift */,
+				630138FA21418B1700958323 /* BarcinChartViewDelegate.swift */,
+			);
+			name = Barcin;
 			sourceTree = "<group>";
 		};
 		740017197A160047EBB8A9A0 /* Standard */ = {
@@ -860,6 +880,7 @@
 				C04D269AD4A373FD2B621C43 /* LineChartData.swift in Sources */,
 				95B6D6F35684292A62DBEA74 /* LineChartDataSet.swift in Sources */,
 				7CB7F74752619B0270CCB0A9 /* LineRadarChartDataSet.swift in Sources */,
+				630138F921414E6B00958323 /* BarcinLineChartView.swift in Sources */,
 				FA07D034D9C3BC7795184ACA /* LineScatterCandleRadarChartDataSet.swift in Sources */,
 				2C879FC24D7A15D70BE4063F /* PieChartData.swift in Sources */,
 				23649EFC635A76022F07FFA6 /* PieChartDataEntry.swift in Sources */,
@@ -877,6 +898,7 @@
 				E8F0F4F47CD7D72B4EE5A794 /* IChartDataSet.swift in Sources */,
 				F941C88BF814DF51C465CB95 /* ILineChartDataSet.swift in Sources */,
 				1311BEC21E9CC264E971EFAF /* ILineRadarChartDataSet.swift in Sources */,
+				630138F721414E4A00958323 /* BarcinLineChartRenderer.swift in Sources */,
 				146EE16342C2BADC92E45BF2 /* ILineScatterCandleRadarChartDataSet.swift in Sources */,
 				FAAD9FF6565DED2652188584 /* IPieChartDataSet.swift in Sources */,
 				83BBAF3EDC31FD452F8BF1DB /* IRadarChartDataSet.swift in Sources */,
@@ -925,8 +947,10 @@
 				5F96E95C7073D21EFE02BCF7 /* LineChartRenderer.swift in Sources */,
 				24151B0729D77251A8494D70 /* LineRadarRenderer.swift in Sources */,
 				B6DCC229615EFE706F64A37D /* LineScatterCandleRadarRenderer.swift in Sources */,
+				630138F521414E3500958323 /* BarcinLineChartDataSet.swift in Sources */,
 				795E100895C24049509F1EDE /* PieChartRenderer.swift in Sources */,
 				97AD2D4620AF917100F9C24A /* Platform+Accessibility.swift in Sources */,
+				630138FB21418B1700958323 /* BarcinChartViewDelegate.swift in Sources */,
 				69EA073EDF75D49ABE1715D6 /* RadarChartRenderer.swift in Sources */,
 				CEF68F42A5390A73113F3663 /* Renderer.swift in Sources */,
 				796D3E63A37A95FD9D1AB9A1 /* ChevronDownShapeRenderer.swift in Sources */,
