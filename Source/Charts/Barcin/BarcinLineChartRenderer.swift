@@ -21,7 +21,7 @@ public class BarcinLineChartRenderer : LineChartRenderer {
         let phaseX = Swift.max(0.0, Swift.min(1.0, animator.phaseX))
         let bounds = BarLineScatterCandleBubbleRenderer.XBounds()
         bounds.min = Int(dataSet.xMin)
-        bounds.max = Int(dataSet.xMax + 1)
+        bounds.max = Int(dataSet.xMax)
         bounds.range = Int(Double(bounds.max - bounds.min) * phaseX)
         
         let filled = super.generateFilledPath(dataSet: dataSet, fillMin: dataSet.fillFormatter?.getFillLinePosition(dataSet: dataSet, dataProvider: dataProvider) ?? 0.0, bounds: bounds, matrix: trans.valueToPixelMatrix)
@@ -136,7 +136,7 @@ public class BarcinLineChartRenderer : LineChartRenderer {
             let phaseX = Swift.max(0.0, Swift.min(1.0, animator.phaseX))
             let bounds = BarLineScatterCandleBubbleRenderer.XBounds()
             bounds.min = Int(minx)
-            bounds.max = Int(maxx + 1)
+            bounds.max = Int(maxx)
             bounds.range = Int(Double(bounds.max - bounds.min) * phaseX)
     
             let filled = super.generateFilledPath(dataSet: set, fillMin: set.fillFormatter?.getFillLinePosition(dataSet: set, dataProvider: dataProvider!) ?? 0.0, bounds: bounds, matrix: trans!.valueToPixelMatrix)
