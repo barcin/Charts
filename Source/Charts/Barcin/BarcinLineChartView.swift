@@ -30,6 +30,7 @@ open class BarcinLineChartView : LineChartView {
         self.removeGestureRecognizer(_panGestureRecognizer)
         self.removeGestureRecognizer(_doubleTapGestureRecognizer)
         self.removeGestureRecognizer(_pinchGestureRecognizer)
+        
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.detectPan(recognizer:)))
         panGestureRecognizer.delegate = self
         panGestureRecognizer.cancelsTouchesInView = false
@@ -115,6 +116,23 @@ open class BarcinLineChartView : LineChartView {
     }
     
     open override func nsuiTouchesBegan(_ touches: Set<NSUITouch>, withEvent event: NSUIEvent?) {
+        super.nsuiTouchesBegan(touches, withEvent: event)
+        self.hValues = []
+        self.totalTouches = (event?.touches(for: self)?.count)!
+        if (event?.touches(for: self)?.count)! <= 2 {
+            for touch in (event?.touches(for: self))! {
+                if let chartH = getHighlightByTouchPoint(touch.location(in: self)){
+                    self.hValues.append(chartH)
+                }
+            }
+            
+            let arr: [Highlight] = self.hValues
+            self.highlightValues(highs: arr, callDelegate: true)
+        }
+    }
+    
+    open override func nsuiTouchesMoved(_ touches: Set<NSUITouch>, withEvent event: NSUIEvent?) {
+        super.nsuiTouchesMoved(touches, withEvent: event)
         self.hValues = []
         self.totalTouches = (event?.touches(for: self)?.count)!
         if (event?.touches(for: self)?.count)! <= 2 {
@@ -130,8 +148,8 @@ open class BarcinLineChartView : LineChartView {
     }
     
     open override func nsuiTouchesEnded(_ touches: Set<NSUITouch>, withEvent event: NSUIEvent?) {
+        super.nsuiTouchesEnded(touches, withEvent: event)
         self.totalTouches -= touches.count
-        
         for touch in touches {
             if let chartH = getHighlightByTouchPoint(touch.location(in: self)){
                 let listOfHValues : [Highlight] = hValues
