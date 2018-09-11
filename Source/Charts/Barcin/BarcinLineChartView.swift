@@ -95,19 +95,23 @@ open class BarcinLineChartView : LineChartView {
         
         if (callDelegate && delegate != nil)
         {
-            if (highs?.count == 0)
-            {
-                barcinDelegate!.chartValueNothingSelected?(self)
-            }
-            else
-            {
-                var barcinDataEntries:[ChartDataEntry] = []
-                var barcinDataIndexes:[Int] = []
-                for high in highs! {
-                    barcinDataEntries.append((_data?.entryForHighlight(high))!)
-                    barcinDataIndexes.append(high.dataSetIndex)
+            if let highlights = highs {
+                if (highlights.count == 0)
+                {
+                    barcinDelegate?.chartValueNothingSelected?(self)
                 }
-                barcinDelegate?.chartValueSelected!(chartView: self, entries: barcinDataEntries, dataSetIndexes: barcinDataIndexes, highlights: highs!)
+                else
+                {
+                    var barcinDataEntries:[ChartDataEntry] = []
+                    var barcinDataIndexes:[Int] = []
+                    for high in highlights {
+                        if let entry = _data?.entryForHighlight(high){
+                            barcinDataEntries.append(entry)
+                            barcinDataIndexes.append(high.dataSetIndex)
+                        }
+                    }
+                    barcinDelegate?.chartValueSelected!(chartView: self, entries: barcinDataEntries, dataSetIndexes: barcinDataIndexes, highlights: highs!)
+                }
             }
         }
         
